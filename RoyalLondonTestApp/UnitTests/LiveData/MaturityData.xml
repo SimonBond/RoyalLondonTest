@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaturityValueData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MaturityValueData>
+    <PolicyNumber>A100001</PolicyNumber>
+    <MaturityValue>14980.0</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>A100002</PolicyNumber>
+    <MaturityValue>16671.875</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>A100003</PolicyNumber>
+    <MaturityValue>23277.350</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>B100001</PolicyNumber>
+    <MaturityValue>18894.00</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>B100002</PolicyNumber>
+    <MaturityValue>24453.00</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>B100003</PolicyNumber>
+    <MaturityValue>33350.00</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>C100001</PolicyNumber>
+    <MaturityValue>17167.80</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>C100002</PolicyNumber>
+    <MaturityValue>20088.00</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>C100003</PolicyNumber>
+    <MaturityValue>27462.60</MaturityValue>
+  </MaturityValueData>
+</ArrayOfMaturityValueData>
