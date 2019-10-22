@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaturityValueData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MaturityValueData>
+    <PolicyNumber>A001</PolicyNumber>
+    <MaturityValue>100</MaturityValue>
+  </MaturityValueData>
+  <MaturityValueData>
+    <PolicyNumber>B001</PolicyNumber>
+    <MaturityValue>200</MaturityValue>
+  </MaturityValueData>
+</ArrayOfMaturityValueData>

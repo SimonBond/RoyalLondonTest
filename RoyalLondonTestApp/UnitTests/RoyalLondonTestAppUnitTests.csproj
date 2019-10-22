@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvReaderTests.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="ProcessTest.cs" />
     <Compile Include="MaturityDataExtractorTests.cs" />
     <Compile Include="MaturityDataTests.cs" />
+    <Compile Include="MaturityValueDataWriterAndReaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LiveData\MaturityData.csv" />

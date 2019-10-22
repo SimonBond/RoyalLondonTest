@@ -9,11 +9,13 @@ namespace RoyalLondonTestApp
   {
     private MaturityValueCalculator _maturityValueCalculator;
     private DataReader<MaturityData> _maturityDataReader;
+    private MaturityValueDataWriter _maturityValueDataWriter;
 
-    public Process(MaturityValueCalculator maturityValueCalculator, DataReader<MaturityData> maturityDataReader)
+    public Process(MaturityValueCalculator maturityValueCalculator, DataReader<MaturityData> maturityDataReader, MaturityValueDataWriter maturityValueDataWriter)
     {
       _maturityValueCalculator = maturityValueCalculator;
       _maturityDataReader = maturityDataReader;
+      _maturityValueDataWriter = maturityValueDataWriter;
     }
 
     public void ProcessFile(string csvFilePath)
@@ -39,12 +41,7 @@ namespace RoyalLondonTestApp
         maturityValueDatas.Add(mvd);
       }
 
-      // The format of the xml file has not been specified, so just serialise the list
-      System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(List<MaturityValueData>));
-
-      TextWriter writer = new StreamWriter(xmlFilePath);
-      serializer.Serialize(writer, maturityValueDatas);
-      writer.Close();
+      _maturityValueDataWriter.Write(maturityValueDatas, xmlFilePath);
     }
   }
 }

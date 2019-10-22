@@ -5,15 +5,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RoyalLondonTestApp;
 using System.IO;
 
-namespace SystemTests
+namespace UnitTests
 {
   /// <summary>
   /// Summary description for UnitTest1
   /// </summary>
   [TestClass]
-  public class ProcessTest
+  public class MaturityValueDataWriterAndReaderTests
   {
-    public ProcessTest()
+    public MaturityValueDataWriterAndReaderTests()
     {
       //
       // TODO: Add constructor logic here
@@ -63,41 +63,28 @@ namespace SystemTests
     [TestMethod]
     public void TestMethod1()
     {
+      List<MaturityValueData> oldValues = new List<MaturityValueData>();
+
+      oldValues.Add(new MaturityValueData() { PolicyNumber = "A001", MaturityValue = 100m });
+      oldValues.Add(new MaturityValueData() { PolicyNumber = "B001", MaturityValue = 200m });
+
       string appDir = Path.GetDirectoryName(Path.GetDirectoryName(TestContext.TestDir));
-      string fileName = Path.Combine(appDir, "UnitTests", "LiveData", "MaturityData.csv");
+      string outputFilePath = Path.Combine(appDir, "UnitTests", "TestData", "output.xml");
 
-      MaturityValueCalculator maturityValueCalculator = new MaturityValueCalculator();
-      DataReader<MaturityData> maturityDataReader = new DataReader<MaturityData>(MaturityDataExtractor.Extractor);
       MaturityValueDataWriter maturityValueDataWriter = new MaturityValueDataWriter();
 
-      Process process = new Process(maturityValueCalculator, maturityDataReader, maturityValueDataWriter);
+      maturityValueDataWriter.Write(oldValues, outputFilePath);
 
-      try
-      {
-        process.ProcessFile(fileName);
-      }
-      catch
-      {
-        Assert.Fail();
-      }
-    }
+      MaturityValueDataReader maturityValueDataReader = new MaturityValueDataReader();
 
-    [TestMethod]
-    public void TestMethod2()
-    {
-      MaturityValueCalculator maturityValueCalculator = new MaturityValueCalculator();
-      DataReader<MaturityData> maturityDataReader = new DataReader<MaturityData>(MaturityDataExtractor.Extractor);
-      MaturityValueDataWriter maturityValueDataWriter = new MaturityValueDataWriter();
-      Process process = new Process(maturityValueCalculator, maturityDataReader, maturityValueDataWriter);
+      List<MaturityValueData> newValues = maturityValueDataReader.ReadFile(outputFilePath);
 
-      try
+      Assert.AreEqual(oldValues.Count, newValues.Count);
+
+      for (int index = 0; index < oldValues.Count; ++index)
       {
-        process.ProcessFile("C:\\RoyalLondon\\Projects\\Test\\RoyalLondonTestApp\\UnitTests\\LiveData\\ThisFileDoesNotExist.csv");
-        Assert.Fail();
-      }
-      catch
-      {
-        // This is expected
+        Assert.AreEqual(oldValues[index].PolicyNumber, newValues[index].PolicyNumber);
+        Assert.AreEqual(oldValues[index].MaturityValue, newValues[index].MaturityValue);
       }
     }
   }
